@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: 'Inter', sans-serif;
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --radius-xl: 1rem;
+  --radius-lg: 0.75rem;
+  --radius-md: 0.5rem;
+  --radius-sm: 0.25rem;
+}
+
+:root {
+  --background: 180 15% 97%;
+  --foreground: 210 25% 15%;
+  
+  --card: 0 0% 100%;
+  --card-foreground: 210 25% 15%;
+  
+  --border: 180 10% 88%;
+  --input: 180 10% 88%;
+  --ring: 184 42% 44%;
+
+  --primary: 184 42% 44%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 180 12% 93%;
+  --secondary-foreground: 210 20% 25%;
+
+  --muted: 180 10% 94%;
+  --muted-foreground: 210 10% 45%;
+
+  --accent: 200 80% 45%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 62.8% 50%;
+  --destructive-foreground: 0 0% 100%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/30 selection:text-primary-foreground;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary border-2 border-background rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  }
+  
+  .glass-panel {
+    @apply bg-card/80 backdrop-blur-xl border border-border shadow-xl shadow-black/5;
+  }
+}
+
+.wp-content {
+  color: hsl(var(--foreground));
+  line-height: 1.85;
+}
+.wp-content h1, .wp-content h2, .wp-content h3, .wp-content h4, .wp-content h5, .wp-content h6 {
+  color: rgb(52,154,167);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.wp-content h2 { font-size: 1.75rem; }
+.wp-content h3 { font-size: 1.5rem; }
+.wp-content p { margin-bottom: 1rem; }
+.wp-content a {
+  color: #0369a1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.wp-content a:hover { color: #3a9ca5; }
+.wp-content strong, .wp-content b {
+  color: hsl(var(--foreground));
+  font-weight: 700;
+}
+.wp-content strong.product-highlight {
+  color: #3a9ca5;
+  font-weight: 700;
+}
+.wp-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+}
+.wp-content ul, .wp-content ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.wp-content li { margin-bottom: 0.5rem; }
+.wp-content blockquote {
+  border-left: 4px solid hsl(var(--primary));
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: hsl(var(--muted-foreground));
+}
+.wp-content iframe {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+}
+.wp-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+.wp-content th, .wp-content td {
+  border: 1px solid hsl(var(--border));
+  padding: 0.75rem;
+  text-align: left;
+}
+.wp-content th {
+  background: hsl(var(--secondary));
+  font-weight: 600;
+}
+.wp-content .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+@media (max-width: 768px) {
+  .wp-content .row {
+    grid-template-columns: 1fr;
+  }
+}
+.wp-content .col-lg-6 {
+  min-width: 0;
+}
+.wp-content .col-lg-6 img {
+  border-radius: 50%;
+  margin: 0 auto 0.5rem;
+  display: block;
+}
